@@ -1,0 +1,18 @@
+<%= form_with url: "/check", method: :post do |form| %>
+  <%= form.hidden_field :game_type, value: @game_type %>
+  <%= form.hidden_field :value_one, value: @value_one %>
+  <%= form.hidden_field :value_two, value: @value_two %>
+  <%= form.text_field :result, autofocus: true %>
+  <%= form.submit "Submit" %>
+<% end %>
+<p>
+You've completed <%= @complete %> problems!
+</p>
+<%= form_with url: "/reset_count", method: :post do |form| %>
+  <%= form.submit "reset" %>
+<% end %>
+<% if flash[:error] %>
+  <div class="text-red-500">
+    <%= flash[:error] %>
+  </div>
+<% end %>
